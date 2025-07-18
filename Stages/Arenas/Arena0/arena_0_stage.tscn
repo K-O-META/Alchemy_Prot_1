@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://4xv23e5x4f05"]
+[gd_scene load_steps=7 format=4 uid="uid://4xv23e5x4f05"]
 
 [ext_resource type="PackedScene" uid="uid://nwjvkualnd0m" path="res://Utilities/UI/ui.tscn" id="1_cpcqb"]
 [ext_resource type="Texture2D" uid="uid://dfbj4ahri4ohj" path="res://Assets/Tile-Sets (64-64).png" id="1_da833"]
 [ext_resource type="PackedScene" uid="uid://cnot4l14njf8g" path="res://Entities/Player/player.tscn" id="3_7yufx"]
+[ext_resource type="PackedScene" uid="uid://cvucfhvy8hid6" path="res://Entities/Enemies/fire_fighter.tscn" id="4_etneg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_da833"]
 texture = ExtResource("1_da833")
@@ -59,3 +60,6 @@ tile_set = SubResource("TileSet_7yufx")
 
 [node name="Player" parent="." instance=ExtResource("3_7yufx")]
 position = Vector2(56, 572)
+
+[node name="FireFighter" parent="." instance=ExtResource("4_etneg")]
+position = Vector2(354, 275)
