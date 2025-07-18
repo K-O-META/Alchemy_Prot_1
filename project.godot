@@ -19,6 +19,11 @@ config/icon="res://Assets/icon.svg"
 
 game_manager="*res://Utilities/GameManager/game_manager.tscn"
 
+[global_group]
+
+enemies=""
+player=""
+
 [input]
 
 ui_left={

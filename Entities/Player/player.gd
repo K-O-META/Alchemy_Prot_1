@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 var speed := 200.0
 var is_shooting: bool = false
@@ -47,3 +47,10 @@ func aiming() -> void:
 	var direction = mouse_pos - player_pos
 	var angle = direction.angle() + PI/2
 	$AimingArrow.rotation = angle
+
+
+func take_damage(damage: int) -> void:
+	# Placeholder for damage logic
+	print("Player took damage: ", damage)
+	
+
