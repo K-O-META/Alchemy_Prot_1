@@ -52,5 +52,11 @@ func aiming() -> void:
 func take_damage(damage: int) -> void:
 	# Placeholder for damage logic
 	print("Player took damage: ", damage)
-	
 
+	placeholder_blink_red()
+
+func placeholder_blink_red() -> void:
+	# Placeholder for blink red logic
+	$PlayerColor.modulate = Color(1, 0, 0)
+	await get_tree().create_timer(0.1).timeout
+	$PlayerColor.modulate = Color(1, 1, 1)

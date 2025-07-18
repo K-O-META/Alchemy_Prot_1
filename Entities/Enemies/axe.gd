@@ -1,8 +1,6 @@
 class_name Axe extends Sprite2D
 
 func animate() -> void:
-	# Placeholder for swing animation logic
-	print("Axe swung")
 	await rotate_360()
 
 
