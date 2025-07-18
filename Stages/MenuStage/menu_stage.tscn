@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8whlj8j71tw5"]
+
+[ext_resource type="Script" uid="uid://wkbjund6a41o" path="res://Stages/MenuStage/menu_stage.gd" id="1_e68d5"]
+
+[node name="MenuStage" type="Node2D"]
+script = ExtResource("1_e68d5")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.133333, 0.694118, 0.298039, 1)
+
+[node name="StageNameLabel" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 108.0
+offset_right = 783.0
+offset_bottom = 207.0
+theme_override_font_sizes/font_size = 48
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameNameLabel" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 190.0
+offset_right = 783.0
+offset_bottom = 289.0
+theme_override_font_sizes/font_size = 72
+text = "Alchemy 0.1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 415.0
+offset_right = 866.0
+offset_bottom = 515.0
+
+[node name="StartButton" type="Button" parent="Background/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Start"
+
+[node name="HowtoplayButton" type="Button" parent="Background/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "How to play"
+
+[node name="OptionsButton" type="Button" parent="Background/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Options"
+
+[connection signal="pressed" from="Background/ButtonsContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Background/ButtonsContainer/HowtoplayButton" to="." method="_on_howtoplay_button_pressed"]
+[connection signal="pressed" from="Background/ButtonsContainer/OptionsButton" to="." method="_on_options_button_pressed"]

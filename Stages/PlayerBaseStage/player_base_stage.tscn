@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://crrk5ux180uvh"]
+
+[ext_resource type="Script" uid="uid://8iasj75nkb3r" path="res://Stages/PlayerBaseStage/player_base_stage.gd" id="1_r7dkp"]
+
+[node name="PlayerBaseStage" type="Node2D"]
+script = ExtResource("1_r7dkp")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.533333, 0.627451, 0, 1)
+
+[node name="StageNameLabel" type="Label" parent="Background"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 0
+offset_left = 286.0
+offset_top = 128.0
+offset_right = 886.0
+offset_bottom = 173.0
+theme_override_font_sizes/font_size = 32
+text = "Player Base Stage"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DescriptionLabel" type="Label" parent="Background"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 0
+offset_left = 286.0
+offset_top = 196.0
+offset_right = 886.0
+offset_bottom = 289.0
+theme_override_font_sizes/font_size = 32
+text = "Not ready yet, please go to the map selection stage."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 284.0
+offset_top = 409.0
+offset_right = 884.0
+offset_bottom = 509.0
+
+[node name="BackButton" type="Button" parent="Background/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="NextButton" type="Button" parent="Background/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Next"
+
+[connection signal="pressed" from="Background/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Background/ButtonsContainer/NextButton" to="." method="_on_next_button_pressed"]

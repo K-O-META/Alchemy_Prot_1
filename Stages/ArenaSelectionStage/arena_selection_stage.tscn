@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgp0ecm3uq6lr"]
+
+[ext_resource type="Script" uid="uid://cblxjdt6m848e" path="res://Stages/ArenaSelectionStage/arena_selection_stage.gd" id="1_cwdee"]
+
+[node name="Arena_Selection_Stage" type="Node2D"]
+script = ExtResource("1_cwdee")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.698039, 0, 0, 1)
+
+[node name="StageNameLabel" type="Label" parent="Background"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 0
+offset_left = 287.0
+offset_top = 141.0
+offset_right = 887.0
+offset_bottom = 186.0
+theme_override_font_sizes/font_size = 32
+text = "Arena Selection Stage"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DescriptionLabel" type="Label" parent="Background"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 0
+offset_left = 287.0
+offset_top = 209.0
+offset_right = 887.0
+offset_bottom = 302.0
+theme_override_font_sizes/font_size = 32
+text = "Not ready yet, please go to the Preparation Stage."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Background"]
+layout_mode = 0
+offset_left = 285.0
+offset_top = 422.0
+offset_right = 885.0
+offset_bottom = 522.0
+
+[node name="BackButton" type="Button" parent="Background/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="NextButton" type="Button" parent="Background/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Next"
+
+[connection signal="pressed" from="Background/ButtonsContainer/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Background/ButtonsContainer/NextButton" to="." method="_on_next_button_pressed"]

@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnot4l14njf8g"]
+
+[ext_resource type="Script" uid="uid://bcsvkwu5es0qt" path="res://Entities/Player/player.gd" id="1_mv1ah"]
+[ext_resource type="Texture2D" uid="uid://cpoxr1xmgtlt4" path="res://Entities/Player/Aiming Circle.png" id="2_3uyv8"]
+[ext_resource type="Texture2D" uid="uid://dgc3hruwhtxdu" path="res://Entities/Player/Aiming Arrow.png" id="3_lu8i8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ix6vc"]
+size = Vector2(40, 40)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_mv1ah")
+
+[node name="PlayerColor" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ix6vc")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="AimingCircle" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -35.0
+offset_right = 35.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3uyv8")
+
+[node name="AimingArrow" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -60.0
+offset_right = 12.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(12, 60)
+texture = ExtResource("3_lu8i8")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="ForceBar" type="ColorRect" parent="AimingArrow"]
+custom_minimum_size = Vector2(24, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -61.0
+offset_right = 12.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1, 1e-05)
+pivot_offset = Vector2(12, 97)
+color = Color(0.6, 0.85098, 0.917647, 1)
