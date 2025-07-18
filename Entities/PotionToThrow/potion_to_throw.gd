@@ -5,7 +5,9 @@ var life_duration: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	match game_manager.potions_counter:
+		0:$TextureRect.texture = load("res://Assets/Potion Blue.png")
+	
 
 func init_grenade(position_t: Vector2) -> void:
 	position = position_t

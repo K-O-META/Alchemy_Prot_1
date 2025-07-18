@@ -3,8 +3,8 @@ extends CharacterBody2D
 var speed := 200.0
 var is_shooting: bool = false
 var shooting_range: float = 0.0
-var range_limit: float = 1.8
-var shooting_speed:float = 1.5
+var range_limit: float = 3.0
+var shooting_speed:float = 3.0
 var potion_to_throw := load("res://Entities/PotionToThrow/potion_to_throw.tscn")
 
 func _process(delta: float) -> void:

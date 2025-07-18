@@ -2,16 +2,14 @@ extends Control
 
 @onready var potion_icons: Array = []
 
-var potions_counter: int = -1
-
 func change_potion(for_next: bool = true) -> void:
 	var potions_indexes: Array = [0,0,0]
 	if for_next:
-		potions_counter += 1
+		game_manager.potions_counter += 1
 	else:
-		potions_counter -= 1
+		game_manager.potions_counter -= 1
 	var potions_num = game_manager.inventory_potions.size()
-	potions_indexes = [potions_counter % potions_num, (potions_counter+1) % potions_num, (potions_counter+2) % potions_num]
+	potions_indexes = [game_manager.potions_counter % potions_num, (game_manager.potions_counter+1) % potions_num, (game_manager.potions_counter+2) % potions_num]
 	
 	$"PotionSelectionContainer/PreviousPotion".texture = potion_icons[potions_indexes[0]]
 	$"PotionSelectionContainer/ActualPotion".texture = potion_icons[potions_indexes[1]]
@@ -29,7 +27,6 @@ func load_potions() -> void:
 func _ready() -> void:
 	load_potions()
 	change_potion()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
