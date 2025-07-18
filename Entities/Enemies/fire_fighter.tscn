@@ -14,8 +14,9 @@ size = Vector2(38, 38)
 [sub_resource type="CircleShape2D" id="CircleShape2D_hfku6"]
 radius = 65.0308
 
-[node name="FireFighter" type="CharacterBody2D" groups=["enemies"]]
+[node name="FireFighter" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemies"]]
 script = ExtResource("1_72agv")
+health_component = NodePath("HealthComponent")
 
 [node name="Axe" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, 0)

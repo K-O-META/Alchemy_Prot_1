@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnot4l14njf8g"]
+[gd_scene load_steps=6 format=3 uid="uid://cnot4l14njf8g"]
 
 [ext_resource type="Script" uid="uid://bcsvkwu5es0qt" path="res://Entities/Player/player.gd" id="1_mv1ah"]
 [ext_resource type="Texture2D" uid="uid://cpoxr1xmgtlt4" path="res://Entities/Player/Aiming Circle.png" id="2_3uyv8"]
 [ext_resource type="Texture2D" uid="uid://dgc3hruwhtxdu" path="res://Entities/Player/Aiming Arrow.png" id="3_lu8i8"]
+[ext_resource type="PackedScene" uid="uid://psc1y6u8b60x" path="res://Entities/Components/health_component.tscn" id="4_tekja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ix6vc"]
 size = Vector2(40, 40)
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["player"]]
 script = ExtResource("1_mv1ah")
+health_component = NodePath("HealthComponent")
 
 [node name="PlayerColor" type="ColorRect" parent="."]
 anchors_preset = 8
@@ -76,3 +78,6 @@ grow_vertical = 0
 scale = Vector2(1, 1e-05)
 pivot_offset = Vector2(12, 97)
 color = Color(0.6, 0.85098, 0.917647, 1)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_tekja")]
+max_health = 30

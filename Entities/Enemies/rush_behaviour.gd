@@ -15,8 +15,8 @@ func _assign_player_target() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if parent.position.distance_to(target.position) < 50.0: return
 
 	if target:
+		if parent.position.distance_to(target.position) < 50.0: return
 		var direction = (target.position - parent.position).normalized()
 		parent.position += direction * parent.speed * delta

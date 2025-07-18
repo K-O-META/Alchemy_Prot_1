@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+@export var health_component: HealthComponent
+
 var speed := 200.0
 var is_shooting: bool = false
 var shooting_range: float = 0.0
@@ -52,8 +54,10 @@ func aiming() -> void:
 func take_damage(damage: int) -> void:
 	# Placeholder for damage logic
 	print("Player took damage: ", damage)
-
 	placeholder_blink_red()
+	if health_component:
+		health_component.take_damage(damage)
+
 
 func placeholder_blink_red() -> void:
 	# Placeholder for blink red logic
