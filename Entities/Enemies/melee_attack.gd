@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var cooldown_timer: Timer
+@export var weapon: Node2D
 var hit_target: Player = null
 var damage_amount: int = 10
 
@@ -24,4 +25,6 @@ func _process(_delta: float) -> void:
 func attack(target: Player) -> void:
 		print("Attacking target: ", target.name)
 		# Replace with actual attack logic (effect.apply(target))
+		if weapon:
+			weapon.animate()  # Assuming the weapon has an animate method
 		target.take_damage(damage_amount)
