@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg665cnwix3pu"]
+
+[ext_resource type="Texture2D" uid="uid://cnoeothaiurjb" path="res://Entities/Enemies/art/axe.png" id="1_8hhhy"]
+[ext_resource type="Script" uid="uid://d1l7oy0kk15dn" path="res://Entities/Weapons/axe.gd" id="2_3jlkk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hhhy"]
+size = Vector2(26.0748, 68.2641)
+
+[node name="Axe" type="Node2D"]
+script = ExtResource("2_3jlkk")
+
+[node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(33, -38)
+scale = Vector2(0.106303, 0.106303)
+texture = ExtResource("1_8hhhy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(28, -36)
+rotation = 0.622544
+shape = SubResource("RectangleShape2D_8hhhy")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

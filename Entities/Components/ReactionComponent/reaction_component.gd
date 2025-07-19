@@ -1,4 +1,4 @@
-class_name ReactionGComponent extends Node2D
+class_name ReactionComponent extends Node2D
 
 
 @export var essence: Enums.Essences = Enums.Essences.FIRE

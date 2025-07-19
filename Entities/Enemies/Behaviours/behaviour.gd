@@ -1,4 +1,4 @@
-extends Behaviour
+class_name Behaviour extends Node2D
 
 var target: Node2D
 var parent: Node2D
@@ -13,10 +13,3 @@ func _assign_player_target() -> void:
 	if not target:
 		print_debug("No player found in group 'player'.")
 
-
-func _physics_process(delta: float) -> void:
-
-	if target:
-		if parent.position.distance_to(target.position) < 50.0: return
-		var direction = (target.position - parent.position).normalized()
-		parent.position += direction * parent.speed * delta

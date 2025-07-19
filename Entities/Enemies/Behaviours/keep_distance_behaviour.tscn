@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4v0v1kanqcm"]
+
+[ext_resource type="Script" uid="uid://1xi3u87yb0lt" path="res://Entities/Enemies/Behaviours/keep_distance_behaviour.gd" id="1_wpckm"]
+
+[node name="KeepDistanceBehaviour" type="Node2D"]
+script = ExtResource("1_wpckm")

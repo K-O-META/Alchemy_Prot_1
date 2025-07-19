@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://fvr0lwtankxt"]
+
+[node name="HitboxComponent" type="CollisionShape2D"]
+scale = Vector2(1.29487, 1.29487)

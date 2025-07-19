@@ -1,0 +1,54 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpnrvf5bmhyw5"]
+
+[ext_resource type="Texture2D" uid="uid://dxddkjftp836i" path="res://Assets/icon.svg" id="1_abs7f"]
+[ext_resource type="Script" uid="uid://bxwrqmmm2t11d" path="res://Entities/Enemies/enemy_base.gd" id="1_d3qje"]
+[ext_resource type="PackedScene" uid="uid://fvr0lwtankxt" path="res://Entities/Components/HitboxComponent/hitbox_component.tscn" id="2_olnqu"]
+[ext_resource type="PackedScene" uid="uid://du4fqfyml6gv1" path="res://Entities/Components/AttackComponent/attack_component.tscn" id="3_cjs85"]
+[ext_resource type="PackedScene" uid="uid://b6r4wry16kxsh" path="res://Entities/Components/AttackComponent/targeting_component.tscn" id="3_hjuu5"]
+[ext_resource type="PackedScene" uid="uid://b15mlp5l2ma8f" path="res://Entities/Weapons/bow.tscn" id="3_mktjp"]
+[ext_resource type="PackedScene" uid="uid://psc1y6u8b60x" path="res://Entities/Components/HealtComponent/health_component.tscn" id="5_qaos1"]
+[ext_resource type="PackedScene" uid="uid://b4v0v1kanqcm" path="res://Entities/Enemies/Behaviours/keep_distance_behaviour.tscn" id="6_ffmtw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3qje"]
+radius = 525.004
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olnqu"]
+size = Vector2(37.0694, 47.109)
+
+[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemies"]]
+script = ExtResource("1_d3qje")
+health_component = NodePath("HealthComponent")
+
+[node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.382813, 0.480469)
+texture = ExtResource("1_abs7f")
+
+[node name="Bow" parent="." instance=ExtResource("3_mktjp")]
+
+[node name="AttackComponent" parent="." node_paths=PackedStringArray("cooldown_timer", "weapon", "targetfinder") instance=ExtResource("3_cjs85")]
+cooldown_timer = NodePath("AttackCooldown")
+weapon = NodePath("../Bow")
+targetfinder = NodePath("TargetingComponent")
+
+[node name="AttackCooldown" type="Timer" parent="AttackComponent"]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="TargetingComponent" parent="AttackComponent" instance=ExtResource("3_hjuu5")]
+
+[node name="CollisionShape2D" parent="AttackComponent/TargetingComponent" index="0"]
+shape = SubResource("CircleShape2D_d3qje")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_olnqu")]
+position = Vector2(0, -0.500001)
+shape = SubResource("RectangleShape2D_olnqu")
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_qaos1")]
+
+[node name="KeepDistanceBehaviour" parent="." instance=ExtResource("6_ffmtw")]
+min_distance = 200.0
+max_distance = 350.0
+
+[editable path="AttackComponent/TargetingComponent"]

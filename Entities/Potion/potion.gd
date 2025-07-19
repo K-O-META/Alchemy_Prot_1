@@ -5,6 +5,8 @@ var potion_texture: Texture2D
 var explosion_texture: Texture2D
 
 
+
+
 func set_essence(essence_t: Enums.Essences) -> void:
 	essence = essence_t
 	match essence:
