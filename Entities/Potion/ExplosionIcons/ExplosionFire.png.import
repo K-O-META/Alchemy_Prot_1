@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://svdapisg7mpn"
-path="res://.godot/imported/Potion Grey.png-a4485eba55b4a2d3f0b7f190d2f5127d.ctex"
+uid="uid://36v8gjdnyohq"
+path="res://.godot/imported/ExplosionFire.png-3ee10f3ddc2d24540e5adb8c42c92018.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Potion Grey.png"
-dest_files=["res://.godot/imported/Potion Grey.png-a4485eba55b4a2d3f0b7f190d2f5127d.ctex"]
+source_file="res://Entities/Potion/ExplosionIcons/ExplosionFire.png"
+dest_files=["res://.godot/imported/ExplosionFire.png-3ee10f3ddc2d24540e5adb8c42c92018.ctex"]
 
 [params]
 

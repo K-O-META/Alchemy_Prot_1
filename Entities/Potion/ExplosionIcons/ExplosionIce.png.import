@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d11vfswbnwfub"
-path="res://.godot/imported/Potion Blue.png-e0e0af93fa2508e622a04bc5140455d8.ctex"
+uid="uid://diswvfwu2ma0s"
+path="res://.godot/imported/ExplosionIce.png-cb074a665362f622b2efeb398246f547.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Potion Blue.png"
-dest_files=["res://.godot/imported/Potion Blue.png-e0e0af93fa2508e622a04bc5140455d8.ctex"]
+source_file="res://Entities/Potion/ExplosionIcons/ExplosionIce.png"
+dest_files=["res://.godot/imported/ExplosionIce.png-cb074a665362f622b2efeb398246f547.ctex"]
 
 [params]
 
