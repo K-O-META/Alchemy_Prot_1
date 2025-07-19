@@ -1,9 +1,11 @@
 extends Node2D
 
+
 var inventory_potions: Array[Potion] = []
 var potions_counter: int = 0
 
 func _ready() -> void:
+	_load_default_potions()
 	pass
 
 #TODO
@@ -31,3 +33,13 @@ func load_stage(stage_name: String) -> void:
 	
 	#TODO
 		#"menu_options_stage":
+
+
+
+func _load_default_potions() -> void:
+	if inventory_potions.is_empty():
+		for e in Enums.Essences.values():
+			var potion = Potion.new()
+			potion.set_essence(e)
+			inventory_potions.append(potion)
+		

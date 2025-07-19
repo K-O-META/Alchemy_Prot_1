@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfm8ga4wc6rat" path="res://Entities/Weapons/bow.gd" id="1_2rg1q"]
 [ext_resource type="Texture2D" uid="uid://cnoeothaiurjb" path="res://Entities/Enemies/art/axe.png" id="2_1cwdy"]
-[ext_resource type="Texture2D" uid="uid://dep1gcw4endkl" path="res://Assets/Canon Icon.png" id="2_2rg1q"]
+[ext_resource type="Texture2D" uid="uid://dep1gcw4endkl" path="res://Utilities/UI/Canon Icon.png" id="2_2rg1q"]
 [ext_resource type="Script" uid="uid://c3fqv7q3wgh0" path="res://Entities/Weapons/arrow.gd" id="3_8eftn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8eftn"]

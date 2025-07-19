@@ -4,13 +4,45 @@
 [ext_resource type="Texture2D" uid="uid://bggdxm83endq4" path="res://Entities/Enemies/art/firefighter.png" id="2_lq4a0"]
 [ext_resource type="Texture2D" uid="uid://cnoeothaiurjb" path="res://Entities/Enemies/art/axe.png" id="2_xaocg"]
 [ext_resource type="Script" uid="uid://d1l7oy0kk15dn" path="res://Entities/Weapons/axe.gd" id="3_si3oy"]
-[ext_resource type="Script" uid="uid://cywhpu3jcg5eo" path="res://Entities/Enemies/melee_attack.gd" id="3_ugeu3"]
 [ext_resource type="Script" uid="uid://c7ikf18t5bgs7" path="res://Entities/Enemies/Behaviours/rush_behaviour.gd" id="4_lq4a0"]
 [ext_resource type="PackedScene" uid="uid://psc1y6u8b60x" path="res://Entities/Components/HealtComponent/health_component.tscn" id="5_xaocg"]
 [ext_resource type="PackedScene" uid="uid://cn1v1yga5oq8u" path="res://Entities/Components/ReactionComponent/reaction_component.tscn" id="8_6ryri"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfku6"]
 size = Vector2(38, 38)
+
+[sub_resource type="GDScript" id="GDScript_si3oy"]
+script/source = "extends Area2D
+
+@export var cooldown_timer: Timer
+@export var weapon: Node2D
+var hit_target: Player = null
+var damage_amount: int = 10
+
+
+func _on_body_shape_entered(_body_rid:RID, body:Node2D, _body_shape_index:int, _local_shape_index:int) -> void:
+	if body is CharacterBody2D and body.is_in_group(\"player\"):
+		hit_target = body
+
+
+func _on_body_shape_exited(_body_rid:RID, body:Node2D, _body_shape_index:int, _local_shape_index:int) -> void:
+	if body == hit_target:
+		hit_target = null
+
+
+func _process(_delta: float) -> void:
+	if hit_target and cooldown_timer.is_stopped():
+		attack(hit_target)
+		cooldown_timer.start()
+
+
+func attack(target: Player) -> void:
+		print(\"Attacking target: \", target.name)
+		# Replace with actual attack logic (effect.apply(target))
+		if weapon:
+			weapon.animate()  # Assuming the weapon has an animate method
+		target.take_damage(Enums.Essences.BASIC, damage_amount)
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hfku6"]
 radius = 65.0308
@@ -36,7 +68,7 @@ scale = Vector2(1.29487, 1.29487)
 shape = SubResource("RectangleShape2D_hfku6")
 
 [node name="MeleeAttack" type="Area2D" parent="." node_paths=PackedStringArray("cooldown_timer", "weapon")]
-script = ExtResource("3_ugeu3")
+script = SubResource("GDScript_si3oy")
 cooldown_timer = NodePath("AttackCooldown")
 weapon = NodePath("../Axe")
 
