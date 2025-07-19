@@ -2,9 +2,9 @@ class_name Player extends CharacterBody2D
 
 @export var health_component: HealthComponent
 
-var speed := 200.0
+var move_speed := 200.0
 var is_shooting: bool = false
-var shooting_range: float = 0.0
+var actual_shooting_range: float = 0.0
 var range_limit: float = 6.0
 var shooting_speed:float = 6.0
 var potion_to_throw := load("res://Entities/PotionToThrow/potion_to_throw.tscn")
@@ -17,17 +17,17 @@ func _process(delta: float) -> void:
 		start_shooting(delta)
 
 func start_shooting(delta: float) -> void:
-	shooting_range += delta * shooting_speed
-	if shooting_range > range_limit:
-		shooting_range = range_limit
-	$AimingArrow/ForceBar.position.y = -74 + (shooting_range * 37)
+	actual_shooting_range += delta * shooting_speed
+	if actual_shooting_range > range_limit:
+		actual_shooting_range = range_limit
+	$AimingArrow/ForceBar.position.y = -74 + (actual_shooting_range * 37)
 	if Input.is_action_just_released("shooting"):
 		is_shooting = false
 		var direction = (get_global_mouse_position() - global_position).normalized() * 100
-		var destination = global_position + (0.36 * direction) + (shooting_range * $AimingArrow/ForceBar.size.y/100) * direction
+		var destination = global_position + (0.36 * direction) + (actual_shooting_range * $AimingArrow/ForceBar.size.y/100) * direction
 		shoot(destination)
-		shooting_range = 0.0
-	$AimingArrow/ForceBar.scale.y = shooting_range
+		actual_shooting_range = 0.0
+	$AimingArrow/ForceBar.scale.y = actual_shooting_range
 
 func shoot(destination: Vector2) -> void:
 	var grenade = potion_to_throw.instantiate()
@@ -42,7 +42,7 @@ func _physics_process(delta):
 	if input_vector.length() > 0:
 		input_vector = input_vector.normalized()
 	
-	velocity = input_vector * speed
+	velocity = input_vector * move_speed
 	move_and_slide()
 
 func aiming() -> void:
