@@ -1,6 +1,6 @@
 class_name EssenceComponent extends Node2D
 
-@export var essence: game_manager.Essences = game_manager.Essences.FIRE
+@export var essence: Enums.Essences = Enums.Essences.FIRE
 
-func return_essence() -> game_manager.Essences:
+func return_essence() -> Enums.Essences:
 	return essence

@@ -1,7 +1,5 @@
 extends Node2D
 
-enum Essences { FIRE, ICE }
-
 var inventory_potions: Array = [0,1]
 var potions_counter: int = -1
 
