@@ -85,6 +85,27 @@ offset_bottom = 70.0
 scale = Vector2(0.25, 1)
 color = Color(1, 0.25098, 0.25098, 1)
 
+[node name="DashBackgroundBar" type="ColorRect" parent="HealthBar"]
+visible = false
+custom_minimum_size = Vector2(300, 15)
+layout_mode = 0
+offset_left = 90.0
+offset_top = 70.0
+offset_right = 390.0
+offset_bottom = 85.0
+color = Color(0, 0, 0, 0.498039)
+
+[node name="DashBar" type="ColorRect" parent="HealthBar"]
+visible = false
+custom_minimum_size = Vector2(300, 15)
+layout_mode = 0
+offset_left = 90.0
+offset_top = 70.0
+offset_right = 390.0
+offset_bottom = 85.0
+scale = Vector2(0.25, 1)
+color = Color(1.44392e-06, 0.680944, 0.415254, 1)
+
 [node name="RangeBar" type="Control" parent="."]
 visible = false
 custom_minimum_size = Vector2(400, 80)
