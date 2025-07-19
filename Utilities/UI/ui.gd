@@ -1,6 +1,8 @@
 extends Control
 
 @onready var potion_icons: Array = []
+@export var player: Player
+var dash_cooldown_value: float = 1.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -9,11 +11,26 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("potion_switch_left"):
 		change_potion(false)
 	if Input.is_action_just_pressed("potion_switch_right"):
 		change_potion()
+	# HP TRACKER
+	if player:
+		$HealthBar/HPBar.scale.x = float(player.health_component.current_health) / float(player.health_component.max_health)
+	else:
+		$HealthBar/HPBar.scale.x = 0
+	# DASH CD TRACKER
+	if player.is_dash_on_cooldown:
+		$HealthBar/DashBackgroundBar.visible = true
+		$HealthBar/DashBar.visible = true
+		dash_cooldown_value -= delta / player.dash_cooldown
+		$HealthBar/DashBar.scale.x = dash_cooldown_value
+	else:
+		$HealthBar/DashBackgroundBar.visible = false
+		$HealthBar/DashBar.visible = false
+		dash_cooldown_value = 1.0
 
 
 func change_potion(for_next: bool = true) -> void:
