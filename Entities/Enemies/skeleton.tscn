@@ -15,7 +15,7 @@ radius = 525.004
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_olnqu"]
 size = Vector2(37.0694, 47.109)
 
-[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
+[node name="Skeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemies"]]
 script = ExtResource("1_d3qje")
 health_component = NodePath("HealthComponent")
 
@@ -25,7 +25,6 @@ scale = Vector2(0.382813, 0.480469)
 texture = ExtResource("1_abs7f")
 
 [node name="Bow" parent="." instance=ExtResource("3_mktjp")]
-position = Vector2(-14, 1)
 
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("cooldown_timer", "weapon", "targetfinder") instance=ExtResource("3_cjs85")]
 cooldown_timer = NodePath("AttackCooldown")

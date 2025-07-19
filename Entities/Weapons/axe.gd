@@ -9,8 +9,11 @@ func reset() -> void:
 	hitbox.monitoring = false
 
 
+func rotate_toward(_target: Node2D) -> void:
+	pass
 
-func attack(_target) -> void:
+
+func attack(_target: Node2D) -> void:
 	if is_attacking: return
 
 	is_attacking = true
@@ -25,6 +28,6 @@ func rotate_360() -> void:
 	await tween.finished
 
 
-func _on_hitbox_body_entered(body:Node2D) -> void:
+func _on_hitbox_body_entered(body: Node2D) -> void:
 	if is_attacking and body.is_in_group("player"):
 		body.take_damage(10)

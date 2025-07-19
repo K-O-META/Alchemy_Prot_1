@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dep1gcw4endkl" path="res://Assets/Canon Icon.png" id="2_2rg1q"]
 [ext_resource type="Script" uid="uid://c3fqv7q3wgh0" path="res://Entities/Weapons/arrow.gd" id="3_8eftn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cwdy"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8eftn"]
 size = Vector2(66, 4)
 
 [node name="Bow" type="Node2D" node_paths=PackedStringArray("arrow")]
@@ -13,17 +13,18 @@ script = ExtResource("1_2rg1q")
 arrow = NodePath("Arrow")
 
 [node name="BowSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(-22, -0.999935)
 scale = Vector2(0.125, 0.273438)
 texture = ExtResource("2_2rg1q")
 
 [node name="Arrow" type="Area2D" parent="." node_paths=PackedStringArray("life_timer")]
+position = Vector2(-22, 6.48499e-05)
 script = ExtResource("3_8eftn")
 life_timer = NodePath("TimeToLive")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Arrow"]
 position = Vector2(2, 0)
-shape = SubResource("RectangleShape2D_1cwdy")
+shape = SubResource("RectangleShape2D_8eftn")
 
 [node name="ArrowSprite" type="Sprite2D" parent="Arrow"]
 position = Vector2(0, -1)

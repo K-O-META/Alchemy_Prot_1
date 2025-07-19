@@ -13,7 +13,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if targetfinder.hit_target and cooldown_timer.is_stopped():
+	if not targetfinder.hit_target: return
+
+	weapon.rotate_toward(targetfinder.hit_target)
+	if cooldown_timer.is_stopped():
 		attack(targetfinder.hit_target)
 		cooldown_timer.start()
 

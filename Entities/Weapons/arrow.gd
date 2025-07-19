@@ -1,13 +1,19 @@
 class_name Arrow extends Area2D
 
+var bow: Bow
 @export var life_timer: Timer
 @export var speed = 600
 var is_shoot = false
-var shoot_direction = Vector2.ZERO
+var shoot_direction
 
+
+
+func _ready() -> void:
+	bow = get_parent()
 
 
 func reset() -> void:
+	reparent(bow)
 	position = Vector2.ZERO
 	rotation = 0
 	is_shoot = false
@@ -16,6 +22,7 @@ func reset() -> void:
 func shoot(target: Node2D) -> void:
 	shoot_direction = (target.global_position - global_position).normalized()
 	is_shoot = true
+	reparent(get_tree().current_scene)
 	life_timer.start()
 
 
