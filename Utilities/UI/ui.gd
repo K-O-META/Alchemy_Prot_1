@@ -1,6 +1,7 @@
 extends Control
 
 @onready var potion_icons: Array = []
+@export var player: Player
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,6 +15,10 @@ func _process(_delta: float) -> void:
 		change_potion(false)
 	if Input.is_action_just_pressed("potion_switch_right"):
 		change_potion()
+	if player:
+		$HealthBar/HPBar.scale.x = float(player.health_component.current_health) / float(player.health_component.max_health)
+	else:
+		$HealthBar/HPBar.scale.x = 0
 
 
 func change_potion(for_next: bool = true) -> void:

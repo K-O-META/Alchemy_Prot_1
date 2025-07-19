@@ -16,5 +16,7 @@ func set_essence(essence_t: Enums.Essences) -> void:
 		Enums.Essences.ICE:
 			potion_texture = load("res://Entities/Potion/PotionIcons/PotionIce.png")
 			explosion_texture = load("res://Entities/Potion/ExplosionIcons/ExplosionIce.png")
+		Enums.Essences.BASIC:
+			pass
 		_:
 			push_error("Nieznana esencja: " + str(essence))
