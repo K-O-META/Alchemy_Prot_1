@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://bxwrqmmm2t11d" path="res://Entities/Enemies/enemy_base.gd" id="1_72agv"]
 [ext_resource type="Texture2D" uid="uid://bggdxm83endq4" path="res://Entities/Enemies/art/firefighter.png" id="2_lq4a0"]
 [ext_resource type="Texture2D" uid="uid://cnoeothaiurjb" path="res://Entities/Enemies/art/axe.png" id="2_xaocg"]
-[ext_resource type="Script" uid="uid://d1l7oy0kk15dn" path="res://Entities/Weapons/axe.gd" id="3_si3oy"]
-[ext_resource type="Script" uid="uid://cywhpu3jcg5eo" path="res://Entities/Enemies/melee_attack.gd" id="3_ugeu3"]
-[ext_resource type="Script" uid="uid://c7ikf18t5bgs7" path="res://Entities/Enemies/Behaviours/rush_behaviour.gd" id="4_lq4a0"]
+[ext_resource type="Script" uid="uid://d1l7oy0kk15dn" path="res://Entities/Enemies/axe.gd" id="3_si3oy"]
+[ext_resource type="Script" uid="uid://k5da5w661db8" path="res://Entities/Enemies/melee_attack.gd" id="3_ugeu3"]
+[ext_resource type="Script" uid="uid://c7ikf18t5bgs7" path="res://Entities/Enemies/rush_behaviour.gd" id="4_lq4a0"]
 [ext_resource type="PackedScene" uid="uid://psc1y6u8b60x" path="res://Entities/Components/HealtComponent/health_component.tscn" id="5_xaocg"]
 [ext_resource type="PackedScene" uid="uid://cn1v1yga5oq8u" path="res://Entities/Components/ReactionComponent/reaction_component.tscn" id="8_6ryri"]
 

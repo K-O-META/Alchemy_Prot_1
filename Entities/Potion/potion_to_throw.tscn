@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dmrbnmyad6wr2"]
 
-[ext_resource type="Texture2D" uid="uid://d11vfswbnwfub" path="res://Assets/Potion Blue.png" id="1_b1jdu"]
-[ext_resource type="Script" uid="uid://bwu6ff65pcxih" path="res://Entities/PotionToThrow/potion_to_throw.gd" id="1_g2bs8"]
-[ext_resource type="Texture2D" uid="uid://36v8gjdnyohq" path="res://Entities/PotionToThrow/Explosion.png" id="3_653xo"]
+[ext_resource type="Script" uid="uid://bwu6ff65pcxih" path="res://Entities/Potion/potion_to_throw.gd" id="1_g2bs8"]
+[ext_resource type="Texture2D" uid="uid://d11vfswbnwfub" path="res://Entities/Potion/PotionIcons/PotionIce.png" id="2_p4qtn"]
+[ext_resource type="Texture2D" uid="uid://36v8gjdnyohq" path="res://Entities/Potion/ExplosionIcons/ExplosionFire.png" id="4_g4nnj"]
 [ext_resource type="PackedScene" uid="uid://bg872vxqwe6vv" path="res://Entities/Components/EssenceComponent/essence_component.tscn" id="4_k8q42"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2bs8"]
@@ -27,7 +27,7 @@ offset_right = 128.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_b1jdu")
+texture = ExtResource("2_p4qtn")
 
 [node name="PotionColissionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g2bs8")
@@ -50,7 +50,7 @@ offset_bottom = -124.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
-texture = ExtResource("3_653xo")
+texture = ExtResource("4_g4nnj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Explosion"]
 shape = SubResource("CircleShape2D_k8q42")

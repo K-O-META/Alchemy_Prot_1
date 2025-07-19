@@ -38,5 +38,5 @@ func _process(delta) -> void:
 func _on_body_entered(body:Node2D) -> void:
 	if not is_shoot: return
 	if body.is_in_group("enemies"): return
-	if body.is_in_group("player"): body.take_damage(10)
+	if body.is_in_group("player"): body.take_damage(Enums.Essences.BASIC, 10)
 	reset()

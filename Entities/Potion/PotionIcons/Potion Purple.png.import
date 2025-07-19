@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dep1gcw4endkl"
-path="res://.godot/imported/Canon Icon.png-c1ae2d2fad10d7e7e1371964dd6e7218.ctex"
+uid="uid://b5nehvk4hunj3"
+path="res://.godot/imported/Potion Purple.png-d9a02ab08603a97f9db434fa145577db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Canon Icon.png"
-dest_files=["res://.godot/imported/Canon Icon.png-c1ae2d2fad10d7e7e1371964dd6e7218.ctex"]
+source_file="res://Entities/Potion/PotionIcons/Potion Purple.png"
+dest_files=["res://.godot/imported/Potion Purple.png-d9a02ab08603a97f9db434fa145577db.ctex"]
 
 [params]
 

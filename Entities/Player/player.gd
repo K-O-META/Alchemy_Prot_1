@@ -7,14 +7,33 @@ var is_shooting: bool = false
 var actual_shooting_range: float = 0.0
 var range_limit: float = 6.0
 var shooting_speed:float = 6.0
-var potion_to_throw := load("res://Entities/PotionToThrow/potion_to_throw.tscn")
+var potion_to_throw_scene := load("res://Entities/Potion/potion_to_throw.tscn")
 
 func _process(delta: float) -> void:
+	# MOVING
+	var input_vector := Vector2.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	if input_vector.length() > 0:
+		input_vector = input_vector.normalized()
+	velocity = input_vector * move_speed
+	move_and_slide()
+	
+	#SHOOTING
 	aiming()
 	if Input.is_action_just_pressed("shooting"):
 		is_shooting = true
 	if is_shooting:
 		start_shooting(delta)
+
+
+# SHOOTING
+func aiming() -> void:
+	var mouse_pos = get_global_mouse_position()
+	var player_pos = global_position
+	var direction = mouse_pos - player_pos
+	var angle = direction.angle() + PI/2
+	$AimingArrow.rotation = angle
 
 func start_shooting(delta: float) -> void:
 	actual_shooting_range += delta * shooting_speed
@@ -30,36 +49,20 @@ func start_shooting(delta: float) -> void:
 	$AimingArrow/ForceBar.scale.y = actual_shooting_range
 
 func shoot(destination: Vector2) -> void:
-	var grenade = potion_to_throw.instantiate()
-	get_parent().add_child(grenade)
-	grenade.init_grenade(position, destination)
-
-func _physics_process(delta):
-	var input_vector := Vector2.ZERO
-	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-	
-	if input_vector.length() > 0:
-		input_vector = input_vector.normalized()
-	
-	velocity = input_vector * move_speed
-	move_and_slide()
-
-func aiming() -> void:
-	var mouse_pos = get_global_mouse_position()
-	var player_pos = global_position
-	var direction = mouse_pos - player_pos
-	var angle = direction.angle() + PI/2
-	$AimingArrow.rotation = angle
+	var potion_to_throw = potion_to_throw_scene.instantiate()
+	get_parent().add_child(potion_to_throw)
+	# ADVANCED MATH, BECOUSE WE WILL MAKE IT WITH INVENTORY SYSTEM LATER
+	var current_potion: Potion = game_manager.inventory_potions[game_manager.potions_counter % game_manager.inventory_potions.size()]
+	potion_to_throw.init_potion_to_throw(position, destination, current_potion)
 
 
-func take_damage(damage: int) -> void:
+# TAKING DAMAGE
+func take_damage(essence: Enums.Essences, damage: int) -> void:
 	# Placeholder for damage logic
-	print("Player took damage: ", damage)
+	print("Player took damage: ")
 	placeholder_blink_red()
 	if health_component:
-		health_component.take_damage(damage)
-
+		health_component.take_damage(essence, damage)
 
 func placeholder_blink_red() -> void:
 	# Placeholder for blink red logic

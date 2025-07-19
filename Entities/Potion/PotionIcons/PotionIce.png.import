@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uhnrxptepj8b"
-path="res://.godot/imported/Heart Icon.png-03d10ed12ad83a01fa781cd01c0b4cba.ctex"
+uid="uid://d11vfswbnwfub"
+path="res://.godot/imported/PotionIce.png-269470ea807c94ccb4db5074cc3ea961.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Heart Icon.png"
-dest_files=["res://.godot/imported/Heart Icon.png-03d10ed12ad83a01fa781cd01c0b4cba.ctex"]
+source_file="res://Entities/Potion/PotionIcons/PotionIce.png"
+dest_files=["res://.godot/imported/PotionIce.png-269470ea807c94ccb4db5074cc3ea961.ctex"]
 
 [params]
 
