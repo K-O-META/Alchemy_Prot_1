@@ -38,7 +38,7 @@ func explode() -> void:
 	var bodies = $Explosion.get_overlapping_bodies()
 	for body in bodies:
 		if body.has_method("take_damage"):
-			body.take_damage(4)
+			body.take_damage(potion.essence, 4)
 	
 	await get_tree().create_timer(1.0).timeout
 	queue_free()

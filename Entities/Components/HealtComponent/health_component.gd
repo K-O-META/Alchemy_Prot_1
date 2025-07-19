@@ -8,8 +8,11 @@ func _ready() -> void:
 	current_health = max_health
 
 
-func take_damage(amount: int) -> void:
+func take_damage(essence: Enums.Essences, amount: int) -> void:
+	if has_node("ReactionComponent"):
+		amount = $ReactionComponent.reaction_for_damage(essence, amount)
 	current_health -= amount
+	print(amount)
 	if current_health <= 0:
 		die()
 

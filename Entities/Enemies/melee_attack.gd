@@ -27,4 +27,4 @@ func attack(target: Player) -> void:
 		# Replace with actual attack logic (effect.apply(target))
 		if weapon:
 			weapon.animate()  # Assuming the weapon has an animate method
-		target.take_damage(damage_amount)
+		target.take_damage(Enums.Essences.BASIC, damage_amount)
