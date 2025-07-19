@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi4w86bht7juj"]
+
+[ext_resource type="Script" uid="uid://c7ikf18t5bgs7" path="res://Entities/Enemies/Behaviours/rush_behaviour.gd" id="1_rciin"]
+
+[node name="RushBehaviour" type="Node2D"]
+script = ExtResource("1_rciin")

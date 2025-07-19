@@ -1,4 +1,5 @@
-class_name Axe extends Sprite2D
+class_name Axe extends Weapon
+
 
 func animate() -> void:
 	await rotate_360()
