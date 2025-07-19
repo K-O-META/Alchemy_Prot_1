@@ -19,11 +19,8 @@ func _process(_delta: float) -> void:
 
 
 func attack(target: Player) -> void:
-		print("Attacking target: ", target.name)
-		# Replace with actual attack logic (effect.apply(target))
 		if weapon:
-			weapon.animate()  # Assuming the weapon has an animate method
-		target.take_damage(damage_amount)
+			weapon.attack(target)
 
 
 

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://b15mlp5l2ma8f"]
+
+[ext_resource type="Script" uid="uid://cfm8ga4wc6rat" path="res://Entities/Weapons/bow.gd" id="1_2rg1q"]
+[ext_resource type="Texture2D" uid="uid://cnoeothaiurjb" path="res://Entities/Enemies/art/axe.png" id="2_1cwdy"]
+[ext_resource type="Texture2D" uid="uid://dep1gcw4endkl" path="res://Assets/Canon Icon.png" id="2_2rg1q"]
+[ext_resource type="Script" uid="uid://c3fqv7q3wgh0" path="res://Entities/Weapons/arrow.gd" id="3_8eftn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cwdy"]
+size = Vector2(66, 4)
+
+[node name="Bow" type="Node2D" node_paths=PackedStringArray("arrow")]
+script = ExtResource("1_2rg1q")
+arrow = NodePath("Arrow")
+
+[node name="BowSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(0.125, 0.273438)
+texture = ExtResource("2_2rg1q")
+
+[node name="Arrow" type="Area2D" parent="." node_paths=PackedStringArray("life_timer")]
+script = ExtResource("3_8eftn")
+life_timer = NodePath("TimeToLive")
+
+[node name="Hitbox" type="CollisionShape2D" parent="Arrow"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_1cwdy")
+
+[node name="ArrowSprite" type="Sprite2D" parent="Arrow"]
+position = Vector2(0, -1)
+rotation = -1.84037
+scale = Vector2(0.0475955, 0.132608)
+texture = ExtResource("2_1cwdy")
+
+[node name="TimeToLive" type="Timer" parent="Arrow"]
+one_shot = true
+
+[connection signal="body_entered" from="Arrow" to="Arrow" method="_on_body_entered"]

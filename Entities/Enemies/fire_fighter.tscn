@@ -1,39 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://cvucfhvy8hid6"]
+[gd_scene load_steps=11 format=3 uid="uid://cvucfhvy8hid6"]
 
 [ext_resource type="Script" uid="uid://bxwrqmmm2t11d" path="res://Entities/Enemies/enemy_base.gd" id="1_72agv"]
+[ext_resource type="PackedScene" uid="uid://cg665cnwix3pu" path="res://Entities/Weapons/axe.tscn" id="2_6ryri"]
 [ext_resource type="Texture2D" uid="uid://bggdxm83endq4" path="res://Entities/Enemies/art/firefighter.png" id="2_lq4a0"]
-[ext_resource type="Texture2D" uid="uid://cnoeothaiurjb" path="res://Entities/Enemies/art/axe.png" id="2_xaocg"]
-[ext_resource type="Script" uid="uid://d1l7oy0kk15dn" path="res://Entities/Weapons/axe.gd" id="3_si3oy"]
 [ext_resource type="PackedScene" uid="uid://fvr0lwtankxt" path="res://Entities/Components/HitboxComponent/hitbox_component.tscn" id="5_6ryri"]
 [ext_resource type="PackedScene" uid="uid://psc1y6u8b60x" path="res://Entities/Components/HealtComponent/health_component.tscn" id="5_xaocg"]
 [ext_resource type="PackedScene" uid="uid://du4fqfyml6gv1" path="res://Entities/Components/AttackComponent/attack_component.tscn" id="6_6ryri"]
 [ext_resource type="PackedScene" uid="uid://b6r4wry16kxsh" path="res://Entities/Components/AttackComponent/targeting_component.tscn" id="7_co081"]
 [ext_resource type="PackedScene" uid="uid://bi4w86bht7juj" path="res://Entities/Enemies/Behaviours/rush_behaviour.tscn" id="8_co081"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_co081"]
-size = Vector2(37.0694, 37.0694)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_co081"]
 radius = 63.0317
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_co081"]
+size = Vector2(37.0694, 37.0694)
 
 [node name="FireFighter" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemies"]]
 script = ExtResource("1_72agv")
 health_component = NodePath("HealthComponent")
 
-[node name="Axe" type="Sprite2D" parent="."]
-position = Vector2(1.90735e-06, 0)
-scale = Vector2(0.106303, 0.106303)
-texture = ExtResource("2_xaocg")
-centered = false
-offset = Vector2(0, -535.875)
-script = ExtResource("3_si3oy")
-
-[node name="Texture" type="Sprite2D" parent="."]
-scale = Vector2(0.120462, 0.120462)
-texture = ExtResource("2_lq4a0")
-
-[node name="HitboxComponent" parent="." instance=ExtResource("5_6ryri")]
-shape = SubResource("RectangleShape2D_co081")
+[node name="Axe" parent="." instance=ExtResource("2_6ryri")]
 
 [node name="AttackComponent" parent="." node_paths=PackedStringArray("cooldown_timer", "weapon", "targetfinder") instance=ExtResource("6_6ryri")]
 cooldown_timer = NodePath("AttackCooldown")
@@ -49,6 +35,13 @@ autostart = true
 
 [node name="CollisionShape2D" parent="AttackComponent/TargetingComponent" index="0"]
 shape = SubResource("CircleShape2D_co081")
+
+[node name="Texture" type="Sprite2D" parent="."]
+scale = Vector2(0.120462, 0.120462)
+texture = ExtResource("2_lq4a0")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("5_6ryri")]
+shape = SubResource("RectangleShape2D_co081")
 
 [node name="RushBehaviour" parent="." instance=ExtResource("8_co081")]
 
