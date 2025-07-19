@@ -16,8 +16,9 @@ func reset() -> void:
 	if bow == null: 
 		queue_free()
 		return
+	await get_tree().process_frame
 	reparent(bow)
-	position = Vector2.ZERO
+	position = Vector2(-22.0, 0)
 	rotation = 0
 	is_shoot = false
 
