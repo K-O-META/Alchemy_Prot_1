@@ -13,6 +13,9 @@ func _ready() -> void:
 
 
 func reset() -> void:
+	if bow == null: 
+		queue_free()
+		return
 	reparent(bow)
 	position = Vector2.ZERO
 	rotation = 0
