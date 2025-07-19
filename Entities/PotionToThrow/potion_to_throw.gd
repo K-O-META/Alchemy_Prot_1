@@ -2,7 +2,7 @@ extends Area2D
 
 var is_alive: bool = true
 var lifespan_limit: float = 1.0
-var life_span: float = 0.0
+var lifespan: float = 0.0
 var start_position: Vector2
 var destination: Vector2
 
@@ -19,9 +19,9 @@ func init_grenade(position_t: Vector2, destination_t: Vector2) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	life_span += delta
-	if life_span <= lifespan_limit:
-		position = lerp(start_position, destination, (life_span/lifespan_limit))
+	lifespan += delta
+	if lifespan <= lifespan_limit:
+		position = lerp(start_position, destination, (lifespan/lifespan_limit))
 	else:
 		if is_alive:
 			is_alive = false
