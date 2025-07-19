@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://d1l7oy0kk15dn" path="res://Entities/Enemies/axe.gd" id="3_si3oy"]
 [ext_resource type="Script" uid="uid://k5da5w661db8" path="res://Entities/Enemies/melee_attack.gd" id="3_ugeu3"]
 [ext_resource type="Script" uid="uid://c7ikf18t5bgs7" path="res://Entities/Enemies/rush_behaviour.gd" id="4_lq4a0"]
-[ext_resource type="PackedScene" uid="uid://psc1y6u8b60x" path="res://Entities/Components/health_component.tscn" id="5_xaocg"]
+[ext_resource type="PackedScene" uid="uid://psc1y6u8b60x" path="res://Entities/Components/HealtComponent/health_component.tscn" id="5_xaocg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfku6"]
 size = Vector2(38, 38)

@@ -17,11 +17,7 @@ func change_potion(for_next: bool = true) -> void:
 
 func load_potions() -> void:
 	potion_icons.append(load("res://Assets/Potion Blue.png"))
-	potion_icons.append(load("res://Assets/Potion Green.png"))
-	potion_icons.append(load("res://Assets/Potion Grey.png"))
-	potion_icons.append(load("res://Assets/Potion Purple.png"))
 	potion_icons.append(load("res://Assets/Potion Red.png"))
-	potion_icons.append(load("res://Assets/Potion Yellow.png"))
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -6,8 +6,8 @@ var speed = 100.0
 
 
 func take_damage(amount: int) -> void:
-    if not health_component:
-        print_debug("No health component attached to enemy.")
-        return
+	if not health_component:
+		print_debug("No health component attached to enemy.")
+		return
 
-    health_component.take_damage(amount)
+	health_component.take_damage(amount)

@@ -1,6 +1,6 @@
 extends Node2D
 
-var inventory_potions: Array = [0,1,2,3,4,5]
+var inventory_potions: Array = [0,1]
 
 
 func _on_back_button_pressed() -> void:
