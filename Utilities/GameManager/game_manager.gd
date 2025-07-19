@@ -1,7 +1,7 @@
 extends Node2D
 
-var inventory_potions: Array = [0,1]
-var potions_counter: int = -1
+var inventory_potions: Array[Potion] = []
+var potions_counter: int = 0
 
 func _ready() -> void:
 	pass

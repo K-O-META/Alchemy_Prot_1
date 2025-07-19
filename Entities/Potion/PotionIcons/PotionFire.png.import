@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5nehvk4hunj3"
-path="res://.godot/imported/Potion Purple.png-feb8bc4139ad6ac453402850babf8fb5.ctex"
+uid="uid://0xw8oo032ck7"
+path="res://.godot/imported/PotionFire.png-b43ff9714906fb17b9be22135787c505.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Potion Purple.png"
-dest_files=["res://.godot/imported/Potion Purple.png-feb8bc4139ad6ac453402850babf8fb5.ctex"]
+source_file="res://Entities/Potion/PotionIcons/PotionFire.png"
+dest_files=["res://.godot/imported/PotionFire.png-b43ff9714906fb17b9be22135787c505.ctex"]
 
 [params]
 

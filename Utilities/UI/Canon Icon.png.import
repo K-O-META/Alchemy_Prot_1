@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://36v8gjdnyohq"
-path="res://.godot/imported/Explosion.png-805cff5babf06fc9b4b0b83a5b05e049.ctex"
+uid="uid://dep1gcw4endkl"
+path="res://.godot/imported/Canon Icon.png-48cae29d75e2a5683e9ddf6091f8c83a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/PotionToThrow/Explosion.png"
-dest_files=["res://.godot/imported/Explosion.png-805cff5babf06fc9b4b0b83a5b05e049.ctex"]
+source_file="res://Utilities/UI/Canon Icon.png"
+dest_files=["res://.godot/imported/Canon Icon.png-48cae29d75e2a5683e9ddf6091f8c83a.ctex"]
 
 [params]
 

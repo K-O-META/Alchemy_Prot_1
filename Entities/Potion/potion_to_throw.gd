@@ -1,23 +1,14 @@
-extends Area2D
+class_name PotionToThrow extends Area2D
 
 var is_alive: bool = true
 var lifespan_limit: float = 1.0
 var lifespan: float = 0.0
 var start_position: Vector2
 var destination: Vector2
+var potion: Potion
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	match (game_manager.potions_counter + 1) % 2:
-		0:$PotionTexture.texture = load("res://Assets/Potion Blue.png")
-		1:$PotionTexture.texture = load("res://Assets/Potion Red.png")
 
-func init_grenade(position_t: Vector2, destination_t: Vector2) -> void:
-	start_position = position_t
-	position = position_t
-	destination = destination_t
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	lifespan += delta
 	if lifespan <= lifespan_limit:
@@ -26,6 +17,21 @@ func _process(delta: float) -> void:
 		if is_alive:
 			is_alive = false
 			explode()
+
+
+func init_potion_to_throw(position_t: Vector2, destination_t: Vector2, potion_t: Potion) -> void:
+	start_position = position_t
+	position = position_t
+	destination = destination_t
+	potion = potion_t
+	
+	update_graphics()
+
+
+func update_graphics() -> void:
+	$PotionTexture.texture = potion.potion_texture
+	$Explosion/ExplosionTexture.texture = potion.explosion_texture
+
 
 func explode() -> void:
 	$Explosion.visible = true
