@@ -6,7 +6,9 @@ var potions_counter: int = 0
 
 func _ready() -> void:
 	_load_default_potions()
-	pass
+	var potion = Potion.new()
+	potion.set_essence(Enums.Essences.BASIC)
+	inventory_potions.append(potion)
 
 #TODO
 func load_stage(stage_name: String) -> void:

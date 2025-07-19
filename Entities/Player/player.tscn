@@ -85,3 +85,8 @@ max_health = 30
 
 [node name="ReactionComponent" parent="HealthComponent" instance=ExtResource("5_5c2io")]
 essence = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0

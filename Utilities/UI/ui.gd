@@ -22,15 +22,19 @@ func _process(delta: float) -> void:
 	else:
 		$HealthBar/HPBar.scale.x = 0
 	# DASH CD TRACKER
-	if player.is_dash_on_cooldown:
-		$HealthBar/DashBackgroundBar.visible = true
-		$HealthBar/DashBar.visible = true
-		dash_cooldown_value -= delta / player.dash_cooldown
-		$HealthBar/DashBar.scale.x = dash_cooldown_value
-	else:
-		$HealthBar/DashBackgroundBar.visible = false
-		$HealthBar/DashBar.visible = false
-		dash_cooldown_value = 1.0
+	if player:
+		if player.is_dash_on_cooldown:
+			$HealthBar/DashBackgroundBar.visible = true
+			$HealthBar/DashBar.visible = true
+			dash_cooldown_value -= delta / player.dash_cooldown
+			# SPAGGETTI BUG FIX: sometimes bar is scaled to left, bcs UI is calculating twice what Player does
+			if dash_cooldown_value < 0:
+				dash_cooldown_value += 1
+			$HealthBar/DashBar.scale.x = dash_cooldown_value
+		else:
+			$HealthBar/DashBackgroundBar.visible = false
+			$HealthBar/DashBar.visible = false
+			dash_cooldown_value = 1.0
 
 
 func change_potion(for_next: bool = true) -> void:
