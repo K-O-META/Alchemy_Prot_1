@@ -52,7 +52,7 @@ script = ExtResource("4_lq4a0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_xaocg")]
 
-[node name="ReactionComponent" parent="HealthComponent" instance=ExtResource("8_6ryri")]
+[node name="ReactionComponent" parent="." instance=ExtResource("8_6ryri")]
 
 [connection signal="body_shape_entered" from="MeleeAttack" to="MeleeAttack" method="_on_body_shape_entered"]
 [connection signal="body_shape_exited" from="MeleeAttack" to="MeleeAttack" method="_on_body_shape_exited"]
