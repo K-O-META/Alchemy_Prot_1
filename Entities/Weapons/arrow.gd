@@ -13,10 +13,10 @@ func _ready() -> void:
 
 
 func reset() -> void:
+	await get_tree().process_frame
 	if bow == null: 
 		queue_free()
 		return
-	await get_tree().process_frame
 	reparent(bow)
 	position = Vector2(-22.0, 0)
 	rotation = 0

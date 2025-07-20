@@ -2,7 +2,6 @@ extends Control
 
 @onready var potion_icons: Array = []
 @export var player: Player
-var dash_cooldown_value: float = 1.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,19 +22,14 @@ func _process(delta: float) -> void:
 		$HealthBar/HPBar.scale.x = 0
 	# DASH CD TRACKER
 	if player:
-		if player.is_dash_on_cooldown:
+		if not player.dash_timer.is_stopped():
 			$HealthBar/DashBackgroundBar.visible = true
 			$HealthBar/DashBar.visible = true
-			dash_cooldown_value -= delta / player.dash_cooldown
-			# SPAGGETTI BUG FIX: sometimes bar is scaled to left, bcs UI is calculating twice what Player does
-			if dash_cooldown_value < 0:
-				dash_cooldown_value += 1
-			$HealthBar/DashBar.scale.x = dash_cooldown_value
+			$HealthBar/DashBar.scale.x = player.dash_timer.time_left / player.dash_timer.wait_time
 		else:
 			$HealthBar/DashBackgroundBar.visible = false
 			$HealthBar/DashBar.visible = false
-			dash_cooldown_value = 1.0
-
+		$HealthBar/DashBar.color = Color(float(player.dash_counter)/player.dashes_limit, 1.0 - (float(player.dash_counter)/player.dashes_limit), 0.0)
 
 func change_potion(for_next: bool = true) -> void:
 	var potions_indexes: Array = [0,0,0]

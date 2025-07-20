@@ -1,11 +1,13 @@
 class_name Player extends CharacterBody2D
 
 @export var health_component: HealthComponent
+@onready var ui: Control = get_parent().get_node("CanvasLayer/UI")
+@onready var dash_timer: Timer = $DashTimer
 
 @export var move_speed: float = 200.0
 @export var dash_distance: float = 100
-@export var dash_cooldown: float = 1.0
-var is_dash_on_cooldown: bool = false
+@export var dashes_limit: int = 2
+var dash_counter: int = 0
 var is_shooting: bool = false
 var actual_shooting_range: float = 0.0
 @export var range_limit: float = 6.0
@@ -23,7 +25,7 @@ func _process(delta: float) -> void:
 	velocity = input_vector * move_speed
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("dash") and not is_dash_on_cooldown:
+	if Input.is_action_just_pressed("dash"):
 		dash(input_vector)
 	
 	#SHOOTING
@@ -33,18 +35,22 @@ func _process(delta: float) -> void:
 	if is_shooting:
 		start_shooting(delta)
 
-	# DASHING
+# DASHING
 func dash(input_vector: Vector2) -> void:
-	is_dash_on_cooldown = true
-	var direction
-	# DASHING DIRECTION
-	if input_vector:
-		direction = input_vector * dash_distance
-	else:
-		direction = (get_global_mouse_position() - global_position).normalized() * dash_distance
-	position += direction
-	await get_tree().create_timer(dash_cooldown).timeout
-	is_dash_on_cooldown = false
+	if dash_timer.is_stopped():
+		dash_timer.start()
+	if dash_counter < dashes_limit:
+		dash_counter += 1
+		var direction
+		# DASHING DIRECTION
+		if input_vector:
+			direction = input_vector * dash_distance
+		else:
+			direction = (get_global_mouse_position() - global_position).normalized() * dash_distance
+		position += direction
+
+func _on_dash_timer_timeout() -> void:
+	dash_counter = 0
 
 # SHOOTING
 func aiming() -> void:
