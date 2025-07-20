@@ -10,7 +10,8 @@ var is_shooting: bool = false
 var actual_shooting_range: float = 0.0
 @export var range_limit: float = 6.0
 @export var shooting_speed:float = 6.0
-var potion_to_throw_scene := load("res://Entities/Potion/potion_to_throw.tscn")
+@onready var potion_to_throw_scene := load("res://Entities/Potion/potion_to_throw.tscn")
+
 
 func _process(delta: float) -> void:
 	# MOVING
