@@ -4,3 +4,29 @@
 
 [node name="HealthComponent" type="Node2D"]
 script = ExtResource("1_bbh48")
+
+[node name="HealthBar" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -30.0
+offset_top = -50.0
+offset_right = 270.0
+offset_bottom = 30.0
+scale = Vector2(0.2, 0.2)
+
+[node name="BackgroundBar" type="ColorRect" parent="HealthBar"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 70.0
+color = Color(0, 0, 0, 0.498039)
+
+[node name="HPBar" type="ColorRect" parent="HealthBar"]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 0
+offset_top = 10.0
+offset_right = 300.0
+offset_bottom = 70.0
+color = Color(1, 0.25098, 0.25098, 1)
