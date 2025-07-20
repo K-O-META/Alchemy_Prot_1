@@ -7,6 +7,8 @@ class_name Player extends CharacterBody2D
 @export var move_speed: float = 200.0
 @export var dash_distance: float = 100
 @export var dashes_limit: int = 2
+@export var one_dash_time: float = 0.1
+var is_dashing: bool = false
 var dash_counter: int = 0
 var is_shooting: bool = false
 var actual_shooting_range: float = 0.0
@@ -39,7 +41,7 @@ func _process(delta: float) -> void:
 func dash(input_vector: Vector2) -> void:
 	if dash_timer.is_stopped():
 		dash_timer.start()
-	if dash_counter < dashes_limit:
+	if dash_counter < dashes_limit and not is_dashing:
 		dash_counter += 1
 		var direction
 		# DASHING DIRECTION
@@ -47,7 +49,11 @@ func dash(input_vector: Vector2) -> void:
 			direction = input_vector * dash_distance
 		else:
 			direction = (get_global_mouse_position() - global_position).normalized() * dash_distance
-		position += direction
+		var tween: Tween = create_tween()
+		is_dashing = true
+		tween.tween_property(self, "position", position+direction, one_dash_time)#.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		await tween.finished
+		is_dashing = false
 
 func _on_dash_timer_timeout() -> void:
 	dash_counter = 0
