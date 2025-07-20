@@ -85,3 +85,14 @@ max_health = 30
 
 [node name="ReactionComponent" parent="HealthComponent" instance=ExtResource("5_5c2io")]
 essence = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

@@ -6,7 +6,7 @@ var potions_counter: int = 0
 
 func _ready() -> void:
 	_load_default_potions()
-	pass
+
 
 #TODO
 func load_stage(stage_name: String) -> void:

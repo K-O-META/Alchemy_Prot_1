@@ -19,13 +19,13 @@ func attack(_target: Node2D) -> void:
 	is_attacking = true
 	hitbox.monitoring = true
 	await rotate_360()
-	reset()
 
 
 func rotate_360() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "rotation_degrees", 360, 0.2).as_relative()
 	await tween.finished
+	reset()
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:

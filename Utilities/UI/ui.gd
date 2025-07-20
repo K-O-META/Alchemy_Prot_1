@@ -1,6 +1,7 @@
 extends Control
 
 @onready var potion_icons: Array = []
+@export var player: Player
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,7 +15,21 @@ func _process(_delta: float) -> void:
 		change_potion(false)
 	if Input.is_action_just_pressed("potion_switch_right"):
 		change_potion()
-
+	# HP TRACKER
+	if player:
+		$HealthBar/HPBar.scale.x = float(player.health_component.current_health) / float(player.health_component.max_health)
+	else:
+		$HealthBar/HPBar.scale.x = 0
+	# DASH CD TRACKER
+	if player:
+		if not player.dash_timer.is_stopped():
+			$HealthBar/DashBackgroundBar.visible = true
+			$HealthBar/DashBar.visible = true
+			$HealthBar/DashBar.scale.x = player.dash_timer.time_left / player.dash_timer.wait_time
+		else:
+			$HealthBar/DashBackgroundBar.visible = false
+			$HealthBar/DashBar.visible = false
+		$HealthBar/DashBar.color = Color(float(player.dash_counter)/player.dashes_limit, 1.0 - (float(player.dash_counter)/player.dashes_limit), 0.0)
 
 func change_potion(for_next: bool = true) -> void:
 	var potions_indexes: Array = [0,0,0]

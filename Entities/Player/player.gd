@@ -1,13 +1,21 @@
 class_name Player extends CharacterBody2D
 
 @export var health_component: HealthComponent
+@onready var ui: Control = get_parent().get_node("CanvasLayer/UI")
+@onready var dash_timer: Timer = $DashTimer
 
-var move_speed := 200.0
+@export var move_speed: float = 200.0
+@export var dash_distance: float = 100
+@export var dashes_limit: int = 2
+@export var one_dash_time: float = 0.1
+var is_dashing: bool = false
+var dash_counter: int = 0
 var is_shooting: bool = false
 var actual_shooting_range: float = 0.0
-var range_limit: float = 6.0
-var shooting_speed:float = 6.0
-var potion_to_throw_scene := load("res://Entities/Potion/potion_to_throw.tscn")
+@export var range_limit: float = 6.0
+@export var shooting_speed:float = 6.0
+@onready var potion_to_throw_scene := load("res://Entities/Potion/potion_to_throw.tscn")
+
 
 func _process(delta: float) -> void:
 	# MOVING
@@ -19,6 +27,9 @@ func _process(delta: float) -> void:
 	velocity = input_vector * move_speed
 	move_and_slide()
 	
+	if Input.is_action_just_pressed("dash"):
+		dash(input_vector)
+	
 	#SHOOTING
 	aiming()
 	if Input.is_action_just_pressed("shooting"):
@@ -26,6 +37,26 @@ func _process(delta: float) -> void:
 	if is_shooting:
 		start_shooting(delta)
 
+# DASHING
+func dash(input_vector: Vector2) -> void:
+	if dash_timer.is_stopped():
+		dash_timer.start()
+	if dash_counter < dashes_limit and not is_dashing:
+		dash_counter += 1
+		var direction
+		# DASHING DIRECTION
+		if input_vector:
+			direction = input_vector * dash_distance
+		else:
+			direction = (get_global_mouse_position() - global_position).normalized() * dash_distance
+		var tween: Tween = create_tween()
+		is_dashing = true
+		tween.tween_property(self, "position", position+direction, one_dash_time)#.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		await tween.finished
+		is_dashing = false
+
+func _on_dash_timer_timeout() -> void:
+	dash_counter = 0
 
 # SHOOTING
 func aiming() -> void:
