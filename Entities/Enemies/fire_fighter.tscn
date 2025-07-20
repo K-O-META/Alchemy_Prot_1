@@ -51,3 +51,4 @@ shape = SubResource("RectangleShape2D_co081")
 [node name="ReactionComponent" parent="HealthComponent" instance=ExtResource("9_co081")]
 
 [editable path="AttackComponent/TargetingComponent"]
+[editable path="HealthComponent"]

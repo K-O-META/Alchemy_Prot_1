@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cg665cnwix3pu" path="res://Entities/Weapons/axe.tscn" id="2_kwxw1"]
 [ext_resource type="PackedScene" uid="uid://du4fqfyml6gv1" path="res://Entities/Components/AttackComponent/attack_component.tscn" id="3_303jr"]
 [ext_resource type="PackedScene" uid="uid://b6r4wry16kxsh" path="res://Entities/Components/AttackComponent/targeting_component.tscn" id="4_gyg12"]
-[ext_resource type="Texture2D" uid="uid://bggdxm83endq4" path="res://Entities/Enemies/art/firefighter.png" id="5_r87hm"]
+[ext_resource type="Texture2D" uid="uid://cfedqgk37bonx" path="res://Entities/Enemies/Golems/art/Golem Grey Standing.png" id="5_w1hf1"]
 [ext_resource type="PackedScene" uid="uid://fvr0lwtankxt" path="res://Entities/Components/HitboxComponent/hitbox_component.tscn" id="6_t4nnm"]
 [ext_resource type="PackedScene" uid="uid://bi4w86bht7juj" path="res://Entities/Enemies/Behaviours/rush_behaviour.tscn" id="7_l73wt"]
 [ext_resource type="PackedScene" uid="uid://psc1y6u8b60x" path="res://Entities/Components/HealtComponent/health_component.tscn" id="8_y1aiq"]
@@ -14,9 +14,9 @@
 radius = 63.0317
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_co081"]
-size = Vector2(37.0694, 37.0694)
+size = Vector2(57.1486, 96.1487)
 
-[node name="FireFighter" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemies"]]
+[node name="GolemBasic" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemies"]]
 script = ExtResource("1_xe6hj")
 health_component = NodePath("HealthComponent")
 
@@ -38,10 +38,12 @@ autostart = true
 shape = SubResource("CircleShape2D_co081")
 
 [node name="Texture" type="Sprite2D" parent="."]
-scale = Vector2(0.120462, 0.120462)
-texture = ExtResource("5_r87hm")
+position = Vector2(-13, -30)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5_w1hf1")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("6_t4nnm")]
+position = Vector2(3.00001, -29.75)
 shape = SubResource("RectangleShape2D_co081")
 
 [node name="RushBehaviour" parent="." instance=ExtResource("7_l73wt")]
@@ -49,5 +51,7 @@ shape = SubResource("RectangleShape2D_co081")
 [node name="HealthComponent" parent="." instance=ExtResource("8_y1aiq")]
 
 [node name="ReactionComponent" parent="HealthComponent" instance=ExtResource("9_h0g7e")]
+essence = 2
+reaction = 3
 
 [editable path="AttackComponent/TargetingComponent"]

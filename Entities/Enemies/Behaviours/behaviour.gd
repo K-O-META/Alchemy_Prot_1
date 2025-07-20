@@ -12,4 +12,3 @@ func _assign_player_target() -> void:
 	target = get_tree().get_nodes_in_group("player").front()
 	if not target:
 		print_debug("No player found in group 'player'.")
-
